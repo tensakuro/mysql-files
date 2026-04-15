@@ -146,4 +146,236 @@ WHERE TRIM(quantity_in_stock) = '0'
 AND LOWER(TRIM(status)) = 'active';
 
 
+-- --------------
 
+-- data cleaning
+
+-- Remove Fully Invalid / Dummy Rows
+
+DELETE FROM supply
+WHERE 
+    LOWER(TRIM(product_name)) IN ('testproduct','dummy item','???','na','unknown');
+
+-- replace null / empty
+
+desc supply;
+
+UPDATE supply
+SET
+    product_name = CASE WHEN product_name IS NULL OR TRIM(product_name) = '' THEN 'Unknown Product' ELSE product_name END,
+    category = CASE WHEN category IS NULL OR TRIM(category) = '' THEN 'Unknown' ELSE category END,
+    supplier_name = CASE WHEN supplier_name IS NULL OR TRIM(supplier_name) = '' THEN 'Unknown Supplier' ELSE supplier_name END,
+    warehouse_location = CASE WHEN warehouse_location IS NULL OR TRIM(warehouse_location) = '' THEN 'Warehouse A' ELSE warehouse_location END,
+    batch_number = CASE WHEN batch_number IS NULL OR TRIM(batch_number) = '' THEN 'Not Available' ELSE batch_number END,
+    status = CASE WHEN status IS NULL OR TRIM(status) = '' THEN 'Active' ELSE status END;
+
+
+select * from supply;
+
+-- Remove Duplicate product_id Records
+
+ALTER TABLE supply 
+ADD COLUMN row_id INT AUTO_INCREMENT PRIMARY KEY;
+
+DELETE t1
+FROM supply t1
+JOIN supply t2
+ON t1.product_id = t2.product_id
+AND t1.row_id > t2.row_id;
+
+
+select * from supply;
+
+-- Remove Rows with Text in Numeric Columns
+
+DELETE FROM supply
+WHERE 
+    TRIM(quantity_in_stock) NOT REGEXP '^-?[0-9]+$'
+OR  TRIM(unit_price) NOT REGEXP '^-?[0-9]+$'
+OR  TRIM(reorder_level) NOT REGEXP '^-?[0-9]+$';
+
+
+-- Remove Rows with Negative Values
+
+DELETE FROM supply
+WHERE 
+    TRIM(quantity_in_stock) LIKE '-%'
+OR  TRIM(reorder_level) LIKE '-%'
+OR  TRIM(unit_price) LIKE '-%';
+
+select count(*) from supply;
+
+-- Fix Zero-Stock Products Marked as Active
+
+UPDATE supply
+SET status = 'Inactive'
+WHERE TRIM(quantity_in_stock) = '0'
+AND LOWER(TRIM(status)) = 'active';
+
+-- Standardize STATUS Column
+
+UPDATE supply
+SET status = CONCAT(
+UPPER(LEFT(LOWER(TRIM(status)), 1)),
+LOWER(SUBSTR(TRIM(status), 2)));
+
+
+-- Step 2: Remove rows with invalid status
+DELETE FROM supply
+WHERE status NOT IN ('Active','Inactive','Pending');
+
+-- Standardize CATEGORY Column
+UPDATE supply
+SET category = CASE
+WHEN LOWER(REPLACE(TRIM(category),'-',' ')) LIKE '%dry fruit%' THEN 'Dry Fruits'
+WHEN LOWER(TRIM(category)) IN ('cereals','cereal') THEN 'Cereals'
+WHEN LOWER(TRIM(category)) IN ('grains','grain') THEN 'Grains'
+WHEN LOWER(TRIM(category)) IN ('oils','oil') THEN 'Oils'
+WHEN LOWER(TRIM(category)) IN ('spices','spice') THEN 'Spices'
+WHEN LOWER(TRIM(category)) IN ('pulses','pulse') THEN 'Pulses'
+WHEN LOWER(TRIM(category)) IN ('grocery','groceries') THEN 'Grocery'
+ELSE CONCAT(UPPER(LEFT(LOWER(TRIM(category)),1)),
+LOWER(SUBSTR(TRIM(category),2)))
+END;
+
+
+-- Standardize WAREHOUSE LOCATION
+
+UPDATE supply
+SET warehouse_location = CASE
+WHEN LOWER(REPLACE(REPLACE(TRIM(warehouse_location),' ',''),'-',''))
+LIKE '%a' THEN 'Warehouse A'
+WHEN LOWER(REPLACE(REPLACE(TRIM(warehouse_location),' ',''),'-',''))
+LIKE '%b' THEN 'Warehouse B'
+WHEN LOWER(REPLACE(REPLACE(TRIM(warehouse_location),' ',''),'-',''))
+LIKE '%c' THEN 'Warehouse C'
+ELSE NULL
+END;
+
+DELETE FROM supply WHERE warehouse_location IS NULL;
+
+select count(*) from supply;
+
+-- Remove Special Characters from Names
+
+UPDATE supply SET
+product_name = TRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(product_name,
+'@',''),'#',''),'!',''),'$',''),'%',''),
+'^',''),'&',''),'*',''),'?',''),'~','')),
+supplier_name = TRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(supplier_name,
+'@',''),'#',''),'!',''),'$',''),'%',''),
+'^',''),'&',''),'*',''),'?',''),'~',''));
+
+select * from supply;
+
+-- - Remove rows whose name still starts with a digit
+DELETE FROM supply
+WHERE LEFT(TRIM(product_name), 1) BETWEEN '0' AND '9';
+
+--  Fix Invalid Supplier Contacts
+
+UPDATE supply
+SET supplier_contact = NULL
+WHERE 
+    supplier_contact IS NULL
+    OR TRIM(supplier_contact) = ''
+    OR NOT TRIM(supplier_contact) REGEXP '^[6-9][0-9]{9}$';
+
+
+select * from supply;
+
+update supply
+set supplier_contact ='9848786858'
+where supplier_contact is null;
+
+select * from supply;
+
+
+-- Standardize Date Formats to YYYY-MM-DD
+
+-- Convert DD-Mon-YY format (e.g. 03-Jan-24)
+UPDATE supply
+SET last_restocked_date =
+DATE_FORMAT(STR_TO_DATE(last_restocked_date,'%d-%b-%y'),'%Y-%m-%d')
+WHERE last_restocked_date LIKE '__-___-__';
+
+-- Convert DD/MM/YYYY format (e.g. 15/02/2024)
+UPDATE supply
+SET last_restocked_date =
+DATE_FORMAT(STR_TO_DATE(last_restocked_date,'%d/%m/%Y'),'%Y-%m-%d')
+WHERE last_restocked_date LIKE '__/__/____';
+
+-- NULL out invalid placeholder values
+UPDATE supply
+SET last_restocked_date = NULL
+WHERE last_restocked_date IN ('future_date','99-99-2024','00-00-0000','NA','???')
+OR last_restocked_date LIKE '99%';
+
+-- --   -- -- -- -- -- 
+
+-- Convert DD/MM/YYYY format (e.g. 15/02/2024)
+UPDATE supply
+SET expiry_date=
+DATE_FORMAT(STR_TO_DATE(expiry_date,'%d/%m/%Y'),'%Y-%m-%d')
+WHERE expiry_date LIKE '__/__/____';
+
+-- NULL out invalid placeholder values
+UPDATE supply
+SET expiry_date = NULL
+WHERE expiry_date IN ('future_date','99-99-2024','00-00-0000','NA','???')
+OR expiry_date LIKE '99%';
+
+
+
+-- Convert DD-Mon-YY format (e.g. 03-Jan-24)
+UPDATE supply
+SET expiry_date =
+DATE_FORMAT(STR_TO_DATE(expiry_date,'%d-%b-%y'),'%Y-%m-%d')
+WHERE expiry_date LIKE '__-___-__';
+
+
+select expiry_date,last_restocked_date from supply;
+
+delete from supply
+where expiry_date is null;
+
+delete from supply
+where last_restocked_date  is null;
+
+-- Delete Rows Where Expiry Date < Restock Date
+
+DELETE FROM supply
+WHERE 
+    (
+        CASE
+            WHEN expiry_date LIKE '____-__-__' 
+                THEN STR_TO_DATE(expiry_date, '%Y-%m-%d')
+            WHEN expiry_date LIKE '__-___-__' 
+                THEN STR_TO_DATE(expiry_date, '%d-%b-%y')
+            WHEN expiry_date LIKE '__/__/____' 
+                THEN STR_TO_DATE(expiry_date, '%d/%m/%Y')
+        END
+    )
+    <
+    (
+        CASE
+            WHEN last_restocked_date LIKE '____-__-__' 
+                THEN STR_TO_DATE(last_restocked_date, '%Y-%m-%d')
+            WHEN last_restocked_date LIKE '__-___-__' 
+                THEN STR_TO_DATE(last_restocked_date, '%d-%b-%y')
+            WHEN last_restocked_date LIKE '__/__/____' 
+                THEN STR_TO_DATE(last_restocked_date, '%d/%m/%Y')
+        END
+    );
+
+
+select * from supply;
+
+-- update Rows with NULL Batch Number
+
+update supply
+set batch_number = 
+WHERE batch_number IS NULL
+OR TRIM(batch_number) = '';
