@@ -1,0 +1,106 @@
+product_id,product_name,category,supplier_name,supplier_contact,warehouse_location,quantity_in_stock,reorder_level,unit_price,last_restocked_date,expiry_date,batch_number,status
+P001,Rice Basmati 5kg,Grains,AgroSupply Co,9876543210,Warehouse A,500,100,250,2024-01-15,2025-06-30,BATCH001,Active
+P002,Sunflower Oil 1L,Oils,PureOil Ltd,9123456780,Warehouse B,300,50,120,2024-02-10,2025-03-31,BATCH002,Active
+P003,Sugar 1kg,Grocery,SweetFarm,9988776655,Warehouse A,800,200,45,2024-01-20,2026-01-01,BATCH003,Active
+P004,Wheat Flour 10kg,Grains,FlourMill Inc,8877665544,Warehouse C,150,50,380,2024-03-05,2025-09-15,BATCH004,Active
+P005,Salt 500g,Grocery,MineralCorp,7766554433,Warehouse B,1200,300,18,2024-02-28,2027-12-31,BATCH005,Active
+P006,Mustard Oil 1L,Oils,GoldenOil,9811223344,Warehouse A,400,80,135,2024-01-18,2025-08-31,BATCH006,Active
+P007,Turmeric Powder 200g,Spices,SpiceTrade,8899001122,Warehouse B,600,150,60,2024-01-30,2026-06-30,BATCH007,Active
+P008,Cumin Seeds 250g,Spices,HerbsWorld,9900112233,Warehouse C,250,75,110,2024-03-20,2026-08-31,BATCH008,Active
+P009,Red Chilli Powder 100g,Spices,SpiceKing,9811001122,Warehouse A,450,100,75,2024-02-15,2026-04-30,BATCH009,Active
+P010,Coriander Powder 200g,Spices,SpiceWorld,9700990011,Warehouse B,380,90,55,2024-01-05,2026-01-31,BATCH010,Active
+P001,Rice Basmati 5kg,Grains,AgroSupply Co,9876543210,Warehouse A,500,100,250,2024-01-15,2025-06-30,BATCH001,Active
+P005,Salt 500g,Grocery,MineralCorp,7766554433,Warehouse B,1200,300,18,2024-02-28,2027-12-31,BATCH005,Active
+P003,Sugar 1kg,Grocery,SweetFarm,9988776655,Warehouse A,800,200,45,2024-01-20,2026-01-01,BATCH003,Active
+P011,,Oils,PureOil Ltd,9123456780,Warehouse B,200,50,95,2024-03-10,2025-04-30,BATCH011,Active
+P012,Mustard Seeds 250g,,SpiceTrade,8899001122,Warehouse A,600,150,60,2024-01-30,2026-06-30,BATCH012,Active
+P013,Cardamom 100g,Spices,,7712345678,Warehouse C,400,100,320,2024-02-14,2026-03-31,BATCH013,Active
+P014,Cloves 50g,Spices,SpiceHub,,Warehouse A,200,60,290,2024-02-01,2026-11-30,BATCH014,Active
+P015,Pepper Black 100g,Spices,SpiceKing,9900112233,,180,60,140,2024-02-01,2025-11-30,BATCH015,Active
+P016,Cinnamon Sticks 50g,Spices,SpiceHub,9900112233,Warehouse A,,55,210,2024-01-28,2026-07-31,BATCH016,Active
+P017,Green Cardamom 50g,Spices,EliteSpice,9811223344,Warehouse B,150,,350,2024-03-10,2026-09-30,BATCH017,Active
+P018,Bay Leaves 50g,Spices,HerbsWorld,9700990011,Warehouse C,300,80,,2024-02-20,2026-12-31,BATCH018,Active
+P019,Chickpeas 1kg,Pulses,LegumeFarm,9812345678,Warehouse B,-300,100,95,2024-01-10,2026-12-31,BATCH019,Active
+P020,Red Lentils 500g,Pulses,DalMart,9023456789,Warehouse A,400,-50,75,2024-03-01,2026-06-30,BATCH020,Active
+P021,Groundnut Oil 2L,Oils,NutriOil,8812345678,Warehouse C,220,80,-180,2024-02-20,2025-08-31,BATCH021,Active
+P022,Black Pepper 200g,Spices,SpiceWorld,9534123456,Warehouse A,-100,40,190,2024-01-22,2026-05-31,BATCH022,Active
+P023,Sesame Oil 500ml,Oils,OilMart,9423012345,Warehouse B,180,-30,220,2024-03-08,2025-12-31,BATCH023,Active
+P024,Soya Chunks 200g,Protein,SoyaFresh,9934567890,Warehouse B,abc,50,65,2024-01-25,2025-10-31,BATCH024,Active
+P025,Maize Flour 2kg,Grains,CornSupply,8823456789,Warehouse A,350,bad,160,2024-02-15,2026-04-30,BATCH025,Active
+P026,Coconut Oil 500ml,Oils,TropicalFarm,9745678901,Warehouse C,270,90,expensive,2024-03-18,2025-07-31,BATCH026,Active
+P027,Poha 1kg,Grains,RiceFlake Co,9345234567,Warehouse A,two hundred,80,65,2024-02-20,2026-04-30,BATCH027,Active
+P028,Semolina 1kg,Grains,GrainBest,9123012345,Warehouse C,420,100,fifty five,2024-01-25,2026-03-31,BATCH028,Active
+P029,Coriander Seeds 250g,Spices,SpiceWorld,12345,Warehouse A,500,120,55,2024-01-05,2026-01-31,BATCH029,Active
+P030,Fenugreek Seeds 250g,Spices,ElitSpice,abc987xyz,Warehouse B,150,40,70,2024-02-22,2026-09-30,BATCH030,Active
+P031,Ajwain 100g,Spices,SpiceHub,0,Warehouse C,200,60,85,2024-03-08,2026-11-30,BATCH031,Active
+P032,Kalonji 100g,Spices,SpiceHub,-9988776655,Warehouse A,180,55,95,2024-01-28,2026-07-31,BATCH032,Active
+P033,Star Anise 50g,Spices,HerbsCo,98765abc12,Warehouse B,120,35,160,2024-02-05,2026-10-31,BATCH033,Active
+P034,Mace Powder 50g,Spices,SpiceKing,000,Warehouse C,90,25,320,2024-03-15,2026-08-31,BATCH034,Active
+P035,Tomato Puree 400g,Canned Goods,FreshCan Co,9867890123,Warehouse B,600,150,70,99-99-2024,2025-06-30,BATCH035,Active
+P036,Corn Starch 500g,Grocery,GrainPro,9756789012,Warehouse C,400,100,45,03-Jan-24,00-00-0000,BATCH036,Active
+P037,Mixed Spice Pack,Spices,SpiceMix,8834567890,Warehouse A,300,80,99,future_date,2026-12-31,BATCH037,Active
+P038,Green Tea 100g,Beverages,TeaLeaf Ltd,9645678901,Warehouse B,250,70,180,2024-02-12,future_date,BATCH038,Active
+P039,Coffee Powder 200g,Beverages,BeanRoast,9534567890,Warehouse C,320,80,350,,2025-12-31,BATCH039,Active
+P040,Herbal Tea 50g,Beverages,NatureTea,9423456789,Warehouse A,200,60,220,2024-01-10,,BATCH040,Active
+P041,Instant Noodles,Grocery,NoodleKing,9312345678,Warehouse B,700,180,35,01-Jan-24,2025-06-15,BATCH041,Active
+P042,Pasta 500g,Grocery,ItalFoods,9201234567,Warehouse C,500,120,65,15/02/2024,2026-01-31,BATCH042,Active
+P043,Paneer 200g,Dairy,FreshDairy,9423456789,Warehouse A,100,30,120,2024-03-25,2024-03-01,BATCH043,Active
+P044,Butter 100g,Dairy,CreamyFarm,9312345678,Warehouse B,80,25,95,2024-03-20,2024-03-10,BATCH044,Active
+P045,Ghee 500ml,Dairy,PureDairy,9201234567,Warehouse C,60,20,580,2024-03-18,2024-03-05,BATCH045,Active
+P046,Yogurt 400g,Dairy,DairyFresh,9090123456,Warehouse A,150,40,55,2024-03-22,2024-03-15,BATCH046,Active
+P047,Almond 250g,dry fruits,NutMart,9201234567,Warehouse C,120,40,450,2024-01-18,2026-12-31,BATCH047,Active
+P048,Cashew 250g,DRY FRUITS,NutPremium,9190123456,Warehouse A,90,30,680,2024-02-08,2026-10-31,BATCH048,Active
+P049,Raisins 500g,Dry Fruits,FruitDry Co,9089012345,Warehouse B,200,60,280,2024-03-12,2026-08-31,BATCH049,Active
+P050,Pistachios 250g,DryFruits,NutWorld,8978901234,Warehouse C,70,25,920,2024-01-30,2026-09-30,BATCH050,Active
+P051,Dates 500g,dry-fruits,OrchardFarm,8867890123,Warehouse A,180,50,310,2024-02-22,2026-11-30,BATCH051,Active
+P052,Oats 500g,cereals,HealthGrain,8756789012,Warehouse B,450,100,130,2024-01-22,2026-03-31,BATCH052,Active
+P053,Muesli 400g,CEREALS,FitFood,8645678901,Warehouse C,300,75,210,2024-02-18,2026-05-31,BATCH053,Active
+P054,Cornflakes 500g,Cereals,CrunchBrand,8534567890,Warehouse A,380,90,175,2024-03-03,2026-07-31,BATCH054,Active
+P055,Honey 500g,Natural,BeeNatural,9534123456,Warehouse B,160,50,320,2024-01-14,2027-01-31,BATCH055,active
+P056,Peanut Butter 400g,Grocery,NutButter,9423012345,Warehouse C,220,60,280,2024-02-25,2026-06-30,BATCH056,ACTIVE
+P057,Jam Strawberry 500g,Grocery,FruitJam,9312901234,Warehouse A,300,75,180,2024-03-15,2025-09-30,BATCH057,inactive
+P058,Pickle Mango 400g,Condiments,PicklePro,9201890123,Warehouse B,250,70,95,2024-01-28,2025-12-31,BATCH058,INACTIVE
+P059,Ketchup 400g,Condiments,SauceMart,9090789012,Warehouse C,400,100,75,2024-02-10,2025-08-31,BATCH059,pending
+P060,Mayonnaise 300g,Condiments,CreamSauce,8979678901,Warehouse A,180,50,120,2024-03-05,2025-06-30,BATCH060,PENDING
+P061,Soy Sauce 200ml,Condiments,AsianFoods,8868567890,Warehouse B,350,90,85,2024-01-20,2026-01-31,BATCH061,???
+P062,Black Beans 500g,Pulses,BeanFarm,9201890123,wh-a,250,70,95,2024-02-05,2026-11-30,BATCH062,Active
+P063,Kidney Beans 500g,Pulses,RedBean Co,9890789012,WH B,180,55,105,2024-03-22,2026-10-31,BATCH063,Active
+P064,Moong Dal 500g,Pulses,GreenGram,9789678901,Warehouse-C,320,90,80,2024-01-12,2026-08-31,BATCH064,Active
+P065,Toor Dal 1kg,Pulses,DalFarm,9678567890,WAREHOUSE A,400,100,120,2024-02-18,2026-07-31,BATCH065,Active
+P066,Chana Dal 500g,Pulses,LegumeKing,9567456789,warehouse b,280,75,90,2024-03-08,2026-06-30,BATCH066,Active
+P067,Urad Dal 500g,Pulses,WhiteDal,9456345678,WareHouse C,350,90,95,2024-01-25,2026-05-31,BATCH067,Active
+P068,Sesame Seeds 250g,Seeds,SeedFarm,9678567890,Warehouse A,450,100,70,2024-02-28,2026-12-31,,Active
+P069,Flaxseeds 250g,Seeds,NutraSeed,9567456789,Warehouse B,200,60,95,2024-03-05,2026-11-30,,Active
+P070,Chia Seeds 200g,Seeds,SuperSeed,9456345678,Warehouse C,150,45,180,2024-01-15,2026-10-31,,Active
+P071,Sunflower Seeds 250g,Seeds,SunSeed,9345234567,Warehouse A,250,70,65,2024-02-22,2026-09-30,,Active
+P072,@RiceSpecial 2kg,Grains,##TopSupply,9534123456,Warehouse B,400,100,210,2024-02-25,2026-02-28,BATCH072,Active
+P073,Sugar##Free 500g,Grocery,Health!Corp,9423012345,Warehouse A,300,80,88,2024-03-15,2026-06-30,BATCH073,Active
+P074,Raj123 Dal 1kg,Pulses,Farm@Fresh,9312901234,Warehouse C,500,120,99,2024-01-30,2026-09-30,BATCH074,Active
+P075,!!Spice Mix 200g,Spices,@SpiceKing,9201890123,Warehouse A,300,80,125,2024-02-08,2026-08-31,BATCH075,Active
+P076,Cinnamon##Powder,Spices,Sita!Foods,9090789012,Warehouse B,220,65,175,2024-03-20,2026-07-31,BATCH076,Active
+P077,Raj123 Coffee,Beverages,##BeanMart,8979678901,Warehouse C,180,55,420,2024-01-12,2025-11-30,BATCH077,Active
+P078,TestProduct,Test,TestSupplier,1234567890,Warehouse X,0,0,0,2024-01-01,2024-01-01,TEST001,Active
+P079,Dummy Item,Unknown,Unknown,0000000000,Warehouse X,0,0,0,2024-01-01,2024-01-01,DUMMY01,Active
+P080,???,???,???,???,???,,,,,,???,???
+P081,,,,,,,,,,,,
+P082,,,,,,,,,,,,
+P083,unknown,unknown,unknown,unknown,unknown,,,,,,unknown,unknown
+P084,Vanilla Extract 50ml,Baking,BakeEssentials,9312345678,Warehouse A,0,20,280,2024-01-18,2025-09-30,BATCH084,Active
+P085,Baking Powder 100g,Baking,RisePro,9201234567,Warehouse B,0,30,45,2024-02-05,2026-03-31,BATCH085,Active
+P086,Baking Soda 200g,Baking,BakeChem,9090123456,Warehouse C,0,25,35,2024-03-12,2026-06-30,BATCH086,Active
+P087,Vinegar 500ml,Condiments,AcidFoods,9534567890,Warehouse A,320,80,65,2024-01-22,2025-10-31,BATCH087,Active
+P088,Tamarind 250g,Grocery,SourFarm,9423456789,Warehouse B,400,100,85,2024-02-18,2026-02-28,BATCH088,Active
+P089,Jaggery 1kg,Grocery,SweetNatural,9312345678,Warehouse C,550,130,110,2024-03-05,2026-08-31,BATCH089,Active
+P090,Rock Salt 1kg,Grocery,MineralNatural,9201345678,Warehouse A,700,150,55,2024-01-28,2027-06-30,BATCH090,Active
+P091,Tapioca Pearls 500g,Grocery,PearlFarm,9090234567,Warehouse B,200,60,70,2024-02-12,2026-04-30,BATCH091,Inactive
+P092,Arrowroot 200g,Grocery,NaturalStarch,8979123456,Warehouse C,150,45,90,2024-03-18,2026-06-30,BATCH092,Active
+P093,Peanuts 500g,Dry Fruits,NutFarm,9456345678,Warehouse A,600,150,110,2024-01-08,2026-07-31,BATCH093,Active
+P094,Vermicelli 200g,Grocery,PastaHome,9345234567,Warehouse B,280,75,35,2024-03-10,2026-06-30,BATCH094,Inactive
+P095,Brown Sugar 500g,Grocery,SweetFarm,9876543210,Warehouse C,350,90,80,2024-02-25,2026-03-31,BATCH095,Active
+P096,Desiccated Coconut,Dry Fruits,CocoFarm,9765432109,Warehouse A,180,50,160,2024-01-15,2026-12-31,BATCH096,Active
+P097,Walnut 250g,Dry Fruits,NutPremium,9654321098,Warehouse B,80,25,780,2024-02-08,2026-10-31,BATCH097,Active
+P098,Fig Dried 250g,Dry Fruits,DriedFruit,9543210987,Warehouse C,100,30,420,2024-03-02,2026-09-30,BATCH098,Active
+P099,Apricot Dried 250g,Dry Fruits,FruitDry Co,9432109876,Warehouse A,90,28,380,2024-01-20,2026-08-31,BATCH099,Active
+P100,Prune 200g,Dry Fruits,PruneFarm,9321098765,Warehouse B,75,22,350,2024-02-28,2026-07-31,BATCH100,Active
+P101,NA,NA,NA,NA,NA,0,0,0,,,NA,NA
+P102,,,,,,,,,,,,
