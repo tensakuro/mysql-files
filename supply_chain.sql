@@ -376,6 +376,288 @@ select * from supply;
 -- update Rows with NULL Batch Number
 
 update supply
-set batch_number = 
+set batch_number = 'Not available'
 WHERE batch_number IS NULL
 OR TRIM(batch_number) = '';
+
+
+--  Create Clean Table
+
+-- Create the clean table with constraints
+CREATE TABLE clean_inventory (
+product_id VARCHAR(10) PRIMARY KEY,
+product_name VARCHAR(100) NOT NULL,
+category VARCHAR(50) NOT NULL,
+supplier_name VARCHAR(100) NOT NULL,
+supplier_contact int,
+warehouse_location VARCHAR(20) NOT NULL,
+quantity_in_stock INT NOT NULL,
+reorder_level INT NOT NULL,
+unit_price int NOT NULL,
+last_restocked_date DATE NOT NULL,
+expiry_date DATE NOT NULL,
+batch_number VARCHAR(20) NOT NULL,
+status VARCHAR(20) NOT NULL
+);
+
+select supplier_contact from supply;
+
+-- Insert only clean, validated rows
+INSERT INTO clean_inventory
+SELECT
+    product_id,
+    TRIM(product_name),
+    category,
+    TRIM(supplier_name),
+    supplier_contact,
+    warehouse_location,
+    quantity_in_stock,
+    reorder_level,
+    unit_price,
+    last_restocked_date,
+    expiry_date,
+    batch_number,
+    status
+FROM supply
+WHERE 
+    product_name IS NOT NULL
+    AND TRIM(product_name) != ''
+    AND category IS NOT NULL
+    AND supplier_name IS NOT NULL
+    AND warehouse_location IN ('Warehouse A','Warehouse B','Warehouse C')
+    AND batch_number IS NOT NULL
+    AND TRIM(batch_number) != ''
+    AND status IN ('Active','Inactive','Pending');
+
+
+SELECT supplier_contact
+FROM supply
+WHERE 
+    supplier_contact IS NOT NULL
+    AND (
+        LENGTH(TRIM(supplier_contact)) > 10
+        OR NOT TRIM(supplier_contact) REGEXP '^[6-9][0-9]{9}$'
+    );
+
+
+
+INSERT INTO supply
+SELECT
+    product_id,
+    TRIM(product_name),
+    category,
+    TRIM(supplier_name),
+    supplier_contact,
+    warehouse_location,
+    quantity_in_stock,
+    reorder_level,
+    unit_price,
+    last_restocked_date,
+    expiry_date,
+    batch_number,
+    status
+FROM supply
+WHERE 
+    product_name IS NOT NULL
+    AND TRIM(product_name) != ''
+    AND category IS NOT NULL
+    AND supplier_name IS NOT NULL
+    AND warehouse_location IN ('Warehouse A','Warehouse B','Warehouse C')
+    AND batch_number IS NOT NULL
+    AND TRIM(batch_number) != ''
+    AND status IN ('Active','Inactive','Pending')
+    AND TRIM(supplier_contact) REGEXP '^[6-9][0-9]{9}$';
+
+
+DESCRIBE clean_inventory;
+
+
+INSERT INTO clean_inventory (
+    product_id,
+    product_name,
+    category,
+    supplier_name,
+    supplier_contact,
+    warehouse_location,
+    quantity_in_stock,
+    reorder_level,
+    unit_price,
+    last_restocked_date,
+    expiry_date,
+    batch_number,
+    status
+)
+SELECT
+    product_id,
+    TRIM(product_name),
+    category,
+    TRIM(supplier_name),
+    supplier_contact,
+    warehouse_location,
+    quantity_in_stock,
+    reorder_level,
+    unit_price,
+    last_restocked_date,
+    expiry_date,
+    batch_number,
+    status
+FROM supply
+WHERE 
+    product_name IS NOT NULL
+    AND TRIM(product_name) != ''
+    AND category IS NOT NULL
+    AND supplier_name IS NOT NULL
+    AND warehouse_location IN ('Warehouse A','Warehouse B','Warehouse C')
+    AND batch_number IS NOT NULL
+    AND TRIM(batch_number) != ''
+    AND status IN ('Active','Inactive','Pending');
+
+
+select * from clean_inventory;
+SELECT COUNT(*) 
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'supply';
+
+DROP TABLE clean_inventory;
+
+CREATE TABLE clean_inventory (
+    product_id VARCHAR(10) PRIMARY KEY,
+    product_name VARCHAR(100),
+    category VARCHAR(50),
+    supplier_name VARCHAR(100),
+    supplier_contact BIGINT,
+    warehouse_location VARCHAR(50),
+    quantity_in_stock INT,
+    reorder_level INT,
+    unit_price DECIMAL(10,2),
+    last_restocked_date DATE,
+    expiry_date DATE,
+    batch_number VARCHAR(50),
+    status VARCHAR(20)
+);
+
+
+SELECT COUNT(*) FROM clean_inventory;
+
+select count(*) from supply;
+
+
+INSERT INTO clean_inventory (
+    product_id,
+    product_name,
+    category,
+    supplier_name,
+    supplier_contact,
+    warehouse_location,
+    quantity_in_stock,
+    reorder_level,
+    unit_price,
+    last_restocked_date,
+    expiry_date,
+    batch_number,
+    status
+)
+SELECT
+    product_id,
+    TRIM(product_name),
+    category,
+    TRIM(supplier_name),
+
+    -- safe supplier_contact
+    CASE 
+        WHEN TRIM(supplier_contact) REGEXP '^[6-9][0-9]{9}$'
+        THEN supplier_contact
+        ELSE NULL
+    END,
+
+    warehouse_location,
+    quantity_in_stock,
+    reorder_level,
+    unit_price,
+    last_restocked_date,
+    expiry_date,
+    batch_number,
+    status
+
+FROM supply
+WHERE 
+    product_name IS NOT NULL
+    AND TRIM(product_name) != ''
+    AND category IS NOT NULL
+    AND supplier_name IS NOT NULL
+    AND warehouse_location IN ('Warehouse A','Warehouse B','Warehouse C')
+    AND batch_number IS NOT NULL
+    AND TRIM(batch_number) != ''
+    AND status IN ('Active','Inactive','Pending')
+    AND quantity_in_stock >= 0
+    AND reorder_level > 0
+    AND unit_price > 0;
+
+
+
+
+INSERT INTO clean_inventory (
+    product_id,
+    product_name,
+    category,
+    supplier_name,
+    supplier_contact,
+    warehouse_location,
+    quantity_in_stock,
+    reorder_level,
+    unit_price,
+    last_restocked_date,
+    expiry_date,
+    batch_number,
+    status
+)
+SELECT
+    product_id,
+    TRIM(product_name),
+    category,
+    TRIM(supplier_name),
+    CASE 
+        WHEN TRIM(supplier_contact) REGEXP '^[6-9][0-9]{9}$' 
+        THEN supplier_contact 
+        ELSE NULL 
+    END,
+    warehouse_location,
+    quantity_in_stock,
+    reorder_level,
+    unit_price,
+    last_restocked_date,
+    expiry_date,
+    batch_number,
+    status
+FROM supply
+WHERE 
+    product_name IS NOT NULL
+    AND TRIM(product_name) != ''
+    AND category IS NOT NULL
+    AND supplier_name IS NOT NULL
+    AND warehouse_location IN ('Warehouse A','Warehouse B','Warehouse C')
+    AND batch_number IS NOT NULL
+    AND TRIM(batch_number) != ''
+    AND status IN ('Active','Inactive','Pending')
+    AND quantity_in_stock >= 0
+    AND reorder_level > 0
+    AND unit_price > 0;
+
+
+UPDATE supply
+SET last_restocked_date = NULL
+WHERE TRIM(last_restocked_date) = '';
+
+UPDATE supply
+SET expiry_date = NULL
+WHERE TRIM(expiry_date) = '';
+
+select * from clean_inventory;
+
+desc clean_inventory;
+
+alter table clean_inventory modify column supplier_contact varchar(10);
+
+
+select * from clean_inventory;
+
