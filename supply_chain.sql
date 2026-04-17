@@ -669,4 +669,82 @@ update clean_inventory set expiry_date ='2026-04-17'
 where expiry_date is null;
 
 
+delete from clean_inventory
+where supplier_name = 'Unknown Supplier';
+
+
+
+delete from clean_inventory
+where product_name = 'Unknown Product';
+
+
+
+delete from clean_inventory
+where category = 'Unknown';
+
+ALTER TABLE clean_inventory
+MODIFY product_id INT AUTO_INCREMENT ;
+
+desc clean_inventory;
+
+ALTER TABLE clean_inventory
+ADD id INT AUTO_INCREMENT PRIMARY KEY;
+
+ALTER TABLE clean_inventory
+DROP PRIMARY KEY;
+
+ALTER TABLE clean_inventory
+ADD id INT AUTO_INCREMENT PRIMARY KEY;
+
+select * from clean_inventory;
+
+desc clean_inventory;
+
+ALTER TABLE clean_inventory
+DROP PRIMARY KEY;
+
+ALTER TABLE clean_inventory
+ADD PRIMARY KEY (id);
+
+ALTER TABLE clean_inventory
+DROP PRIMARY KEY;
+
+ALTER TABLE clean_inventory
+ADD PRIMARY KEY (id);
+
+select * from clean_inventory;
+
+ALTER TABLE clean_inventory
+DROP PRIMARY KEY;
+
+ALTER TABLE clean_inventory
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (id);
+
+ALTER TABLE clean_inventory
+MODIFY id INT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE clean_inventory
+ADD UNIQUE (product_id);
+
+
+select * from clean_inventory;
+
+UPDATE clean_inventory ci
+JOIN (
+    SELECT id,
+           CONCAT('P', LPAD(ROW_NUMBER() OVER (ORDER BY id), 3, '0')) AS new_pid
+    FROM clean_inventory
+) t
+ON ci.id = t.id
+SET ci.product_id = t.new_pid;
+
+select  * from clean_inventory;
+
+
+desc clean_inventory;
+
+
+
+
 
