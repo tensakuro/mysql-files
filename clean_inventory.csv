@@ -9,8 +9,6 @@ P007,Turmeric Powder 200g,Spices,SpiceTrade,"8899001122",Warehouse B,600,150,60.
 P008,Cumin Seeds 250g,Spices,HerbsWorld,"9900112233",Warehouse C,250,75,110.00,"2024-03-20","2026-08-31",BATCH008,Active
 P009,Red Chilli Powder 100g,Spices,SpiceKing,"9811001122",Warehouse A,450,100,75.00,"2024-02-15","2026-04-30",BATCH009,Active
 P010,Coriander Powder 200g,Spices,SpiceWorld,"9700990011",Warehouse B,380,90,55.00,"2024-01-05","2026-01-31",BATCH010,Active
-P011,Unknown Product,Oils,PureOil Ltd,"9123456780",Warehouse B,200,50,95.00,"2024-03-10","2025-04-30",BATCH011,Active
-P012,Mustard Seeds 250g,Unknown,SpiceTrade,"8899001122",Warehouse A,600,150,60.00,"2024-01-30","2026-06-30",BATCH012,Active
 P014,Cloves 50g,Spices,SpiceHub,"9848786858",Warehouse A,200,60,290.00,"2024-02-01","2026-11-30",BATCH014,Active
 P015,Pepper Black 100g,Spices,SpiceKing,"9900112233",Warehouse A,180,60,140.00,"2024-02-01","2025-11-30",BATCH015,Active
 P029,Coriander Seeds 250g,Spices,SpiceWorld,"9848786858",Warehouse A,500,120,55.00,"2024-01-05","2026-01-31",BATCH029,Active
