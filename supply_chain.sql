@@ -661,3 +661,12 @@ alter table clean_inventory modify column supplier_contact varchar(10);
 
 select * from clean_inventory;
 
+
+update clean_inventory set last_restocked_date ='2024-04-17'
+where last_restocked_date is null;
+
+update clean_inventory set expiry_date ='2026-04-17'
+where expiry_date is null;
+
+
+
