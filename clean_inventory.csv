@@ -20,8 +20,8 @@ P031,Ajwain 100g,Spices,SpiceHub,"9848786858",Warehouse C,200,60,85.00,"2024-03-
 P032,Kalonji 100g,Spices,SpiceHub,"9848786858",Warehouse A,180,55,95.00,"2024-01-28","2026-07-31",BATCH032,Active
 P033,Star Anise 50g,Spices,HerbsCo,"9848786858",Warehouse B,120,35,160.00,"2024-02-05","2026-10-31",BATCH033,Active
 P034,Mace Powder 50g,Spices,SpiceKing,"9848786858",Warehouse C,90,25,320.00,"2024-03-15","2026-08-31",BATCH034,Active
-P039,Coffee Powder 200g,Beverages,BeanRoast,"9534567890",Warehouse C,320,80,350.00,,"2025-12-31",BATCH039,Active
-P040,Herbal Tea 50g,Beverages,NatureTea,"9423456789",Warehouse A,200,60,220.00,"2024-01-10",,BATCH040,Active
+P039,Coffee Powder 200g,Beverages,BeanRoast,"9534567890",Warehouse C,320,80,350.00,"2024-04-17","2025-12-31",BATCH039,Active
+P040,Herbal Tea 50g,Beverages,NatureTea,"9423456789",Warehouse A,200,60,220.00,"2024-01-10","2026-04-17",BATCH040,Active
 P041,Instant Noodles,Grocery,NoodleKing,"9312345678",Warehouse B,700,180,35.00,"2024-01-01","2025-06-15",BATCH041,Active
 P042,Pasta 500g,Grocery,ItalFoods,"9201234567",Warehouse C,500,120,65.00,"2024-02-15","2026-01-31",BATCH042,Active
 P047,Almond 250g,Dry Fruits,NutMart,"9201234567",Warehouse C,120,40,450.00,"2024-01-18","2026-12-31",BATCH047,Active
